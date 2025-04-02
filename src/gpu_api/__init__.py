@@ -14,13 +14,23 @@ app = FastAPI()
 @app.get("/{task_name}")
 async def get_model(task_name: TaskName):
     if task_name is TaskName.MESH:
-        result = subprocess.run(["echo."], capture_output=True, text=True)
+        result = subprocess.run(
+            [
+                "python",
+                "run.py",
+                "configs/instant-mesh-large.yaml",
+                "examples/IMG_0235.png",
+                "--export_texmap",
+            ],
+            capture_output=True,
+            text=True,
+        )
 
         return {"task_name": task_name, "result": result}
 
 
 def main():
-    uvicorn.run("gpu_api:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("gpu_api:app", host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__":
