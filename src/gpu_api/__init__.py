@@ -16,7 +16,7 @@ async def get_model(task_name: TaskName):
     if task_name is TaskName.MESH:
         result = subprocess.run(
             [
-                "python",
+                "python3",
                 "run.py",
                 "configs/instant-mesh-base.yaml",
                 "examples/hatsune_miku.png",
