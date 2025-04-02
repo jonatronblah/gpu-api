@@ -1,0 +1,1 @@
+docker run --entrypoint sh --rm -it -p 8000:8000 --gpus all -v "C:\Users\jonathan\Desktop\test:/workspace/instantmesh/ckpts" -e CONFIG=instant-mesh-base mrlemur/instantmesh:slim
