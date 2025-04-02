@@ -18,8 +18,8 @@ async def get_model(task_name: TaskName):
             [
                 "python",
                 "run.py",
-                "configs/instant-mesh-large.yaml",
-                "examples/unnamed.png",
+                "configs/instant-mesh-base.yaml",
+                "examples/hatsune_miku.png",
                 "--export_texmap",
             ],
             capture_output=True,
