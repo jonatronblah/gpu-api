@@ -14,7 +14,7 @@ app = FastAPI()
 @app.get("/{task_name}")
 async def get_model(task_name: TaskName):
     if task_name is TaskName.MESH:
-        result = subprocess.run([""], capture_output=True, text=True)
+        result = subprocess.run(["echo."], capture_output=True, text=True)
 
         return {"task_name": task_name, "result": result}
 
