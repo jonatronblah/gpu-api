@@ -1,24 +1,22 @@
 import uvicorn
 from fastapi import FastAPI
 from enum import Enum
+import subprocess
 
 
-class ModelName(str, Enum):
-    ALEXNET = "alexnet"
-    RESNET = "resnet"
-    LENET = "lenet"
+class TaskName(str, Enum):
+    MESH = "mesh"
 
 
 app = FastAPI()
 
 
-@app.get("/{model_name}")
-async def get_model(model_name: ModelName):
-    if model_name is ModelName.ALEXNET:
-        return {"model_name": model_name, "message": "Deep Learning FTW!"}
-    elif model_name.value == "resnet":
-        return {"model_name": model_name, "message": "Leaning ResNet!"}
-    return {"model_name": model_name, "message": "Have some residuals!"}
+@app.get("/{task_name}")
+async def get_model(task_name: TaskName):
+    if task_name is TaskName.MESH:
+        result = subprocess.run([""], capture_output=True, text=True)
+
+        return {"task_name": task_name, "result": result}
 
 
 def main():
